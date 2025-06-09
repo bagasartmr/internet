@@ -27,3 +27,8 @@ npm run dev
 ```sh
 npm run build
 ```
+
+
+### koneksi cloud flare
+1. buka terminal dan tambahkan cf dependency dengan ``npm i -0@cloudflare/viteplugin wrangler'.
+2. setting `vite.config.js` 
