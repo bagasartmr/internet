@@ -1,5 +1,7 @@
 {
   "name": "cf-vue",
   "compatibility_date": "2025-05-06",
-  "assets": "./dist"
+  "assets": {
+    "directory": "./dist"
+}
 }
