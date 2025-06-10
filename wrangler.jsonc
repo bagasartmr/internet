@@ -1,5 +1,5 @@
 {
   "name": "cf-vue",
-  "compatibility_date": "2025-05-05",
-  "assets": {"bucket": "./dist"} 
+  "compatibility_date": "2025-05-06",
+  "assets": "./dist"
 }
