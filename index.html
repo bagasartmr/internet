@@ -2,22 +2,22 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Daftar WiFi (Vue.js - Tanpa Style)</title>
+  <title>INET BAGAS</title>
   <script src="https://unpkg.com/vue@3"></script>
 </head>
 <body>
 
 <div id="app">
-  <h2>Daftar WiFi</h2>
+  <h2>DATA PELANGGAN INET</h2>
 
-  <input v-model="newWifi.name" placeholder="Nama WiFi">
+  <input v-model="newWifi.name" placeholder="Nama">
   <input v-model="newWifi.password" placeholder="Password">
   <button @click="addWifi">Tambah</button>
 
   <table v-if="wifiList.length">
     <thead>
       <tr>
-        <th>Nama WiFi</th>
+        <th>Nama Pelanggan</th>
         <th>Password</th>
         <th>Aksi</th>
       </tr>
