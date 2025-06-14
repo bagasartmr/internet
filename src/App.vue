@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <WifiList />
+    <InetBagas />
   </div>
 </template>
 
