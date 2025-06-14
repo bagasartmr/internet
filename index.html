@@ -1,93 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>INET BAGAS</title>
-  <script src="https://unpkg.com/vue@3"></script>
-</head>
-<body>
-
-<div id="app">
-  <h2>DATA PELANGGAN INET</h2>
-
-  <input v-model="newWifi.name" placeholder="Nama">
-  <input v-model="newWifi.password" placeholder="Password">
-  <button @click="addWifi">Tambah</button>
-
-  <table v-if="wifiList.length">
-    <thead>
-      <tr>
-        <th>Nama Pelanggan</th>
-        <th>Password</th>
-        <th>Aksi</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="(wifi, index) in wifiList" :key="index">
-        <template v-if="!wifi.editing">
-          <td>{{ wifi.name }}</td>
-          <td>{{ wifi.password }}</td>
-          <td>
-            <button @click="editWifi(wifi)">Edit</button>
-            <button @click="deleteWifi(index)">Hapus</button>
-          </td>
-        </template>
-        <template v-else>
-          <td><input v-model="wifi.name"></td>
-          <td><input v-model="wifi.password"></td>
-          <td>
-            <button @click="saveWifi(wifi)">Simpan</button>
-            <button @click="deleteWifi(index)">Hapus</button>
-          </td>
-        </template>
-      </tr>
-    </tbody>
-  </table>
-
-  <p v-else>Tidak ada data WiFi.</p>
-</div>
-
-<script>
-const { createApp } = Vue;
-
-createApp({
-  data() {
-    return {
-      newWifi: {
-        name: '',
-        password: ''
-      },
-      wifiList: []
-    };
-  },
-  methods: {
-    addWifi() {
-      if (this.newWifi.name && this.newWifi.password) {
-        this.wifiList.push({
-          name: this.newWifi.name,
-          password: this.newWifi.password,
-          editing: false
-        });
-        this.newWifi.name = '';
-        this.newWifi.password = '';
-      } else {
-        alert('Masukkan nama dan password');
-      }
-    },
-    editWifi(wifi) {
-      wifi.editing = true;
-    },
-    saveWifi(wifi) {
-      wifi.editing = false;
-    },
-    deleteWifi(index) {
-      if (confirm('Yakin ingin menghapus data ini?')) {
-        this.wifiList.splice(index, 1);
-      }
-    }
-  }
-}).mount('#app');
-</script>
-
-</body>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Inet Bagas</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
 </html>
