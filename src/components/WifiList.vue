@@ -61,5 +61,46 @@
     </div>
 </template>
 <script>
-
+export default {
+  data() {
+    return {
+      newWifi: {
+        name: '',
+        nohp: '',
+        alamat: '',
+        paket: ''
+      },
+      wifiList: []
+    }
+  },
+  methods: {
+    addWifi() {
+      if (
+        this.newWifi.name &&
+        this.newWifi.nohp &&
+        this.newWifi.alamat &&
+        this.newWifi.paket
+      ) {
+        this.wifiList.push({
+          ...this.newWifi,
+          editing: false
+        })
+        this.newWifi = { name: '', nohp: '', alamat: '', paket: '' }
+      } else {
+        alert('Mohon lengkapi semua data.')
+      }
+    },
+    editWifi(wifi) {
+      wifi.editing = true
+    },
+    saveWifi(wifi) {
+      wifi.editing = false
+    },
+    deleteWifi(index) {
+      if (confirm('Yakin ingin menghapus data ini?')) {
+        this.wifiList.splice(index, 1)
+      }
+    }
+  }
+}
 </script>
