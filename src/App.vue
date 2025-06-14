@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <InetBagas />
+    <WifiList />
   </div>
 </template>
 
 <script>
-import InetBagas from './components/InetBagas.vue'
+import WifiList from './components/WifiList.vue'
 
 export default {
   components: {
-    InetBagas
+    WifiList
   }
 }
 </script>
