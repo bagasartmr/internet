@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+/*import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -18,6 +18,21 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
   ],
+})
+
+export default router
+*/
+import { createRouter, CreateRouter, createWebHistory } from "vue-router"
+import WifiList from "../views/WifiList.vue"
+
+const routes = [
+  {
+    path:'', component: WifiList
+  }
+]
+const router = createRouter({
+history:createWebHistory(),
+routes
 })
 
 export default router
