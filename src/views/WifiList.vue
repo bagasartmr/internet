@@ -107,13 +107,13 @@ export default {
 
 <style scoped>
 #app {
-  max-width: 900px;
+  max-width: 960px;
   margin: 30px auto;
   padding: 20px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #fefefe;
+  background: #fefefe;
+  font-family: 'Segoe UI', sans-serif;
   border-radius: 10px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 h2 {
@@ -122,85 +122,91 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* --- Form Input Style --- */
-.form-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.form-section {
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.form-group input,
-.form-group select {
-  width: 100%;
-  padding: 8px 10px;
+.form-section input,
+.form-section select {
+  flex: 1 1 250px;
+  padding: 10px 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 14px;
 }
 
-button {
-  padding: 8px 14px;
+.btn {
+  padding: 10px 14px;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
   font-weight: bold;
   font-size: 14px;
-  margin: 4px 2px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-button:hover {
+.btn.primary {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.btn.warning {
+  background-color: #f1c40f;
+  color: #333;
+}
+
+.btn.danger {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.btn:hover {
   opacity: 0.9;
 }
 
-button:nth-child(1),
-.btn-primary {
-  background-color: #3498db;
-  color: white;
+.table-container {
+  overflow-x: auto;
 }
 
-.btn-warning {
-  background-color: #f39c12;
-  color: white;
-}
-
-.btn-danger {
-  background-color: #e74c3c;
-  color: white;
-}
-
-/* --- Table Style --- */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
-  background-color: white;
+  background: white;
 }
 
 th,
 td {
   padding: 10px;
+  border-bottom: 1px solid #eee;
   text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-size: 14px;
 }
 
 th {
-  background-color: #f4f4f4;
+  background-color: #f3f3f3;
   color: #333;
 }
 
-p {
-  text-align: center;
-  font-style: italic;
-  color: #777;
-  margin-top: 20px;
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
 }
 
-/* --- RESPONSIVE UNTUK HANDPHONE --- */
-@media (max-width: 768px) {
-  .form-group {
-    grid-template-columns: 1fr;
+.no-data {
+  text-align: center;
+  color: #888;
+  margin-top: 30px;
+  font-style: italic;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .form-section {
+    flex-direction: column;
   }
 
   table,
@@ -210,6 +216,7 @@ p {
   td,
   tr {
     display: block;
+    width: 100%;
   }
 
   thead {
@@ -217,25 +224,24 @@ p {
   }
 
   tr {
+    background: #fff;
     margin-bottom: 15px;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 10px;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
   }
 
   td {
-    position: relative;
-    padding-left: 50%;
-    text-align: left;
-    border: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: none;
   }
 
   td::before {
     content: attr(data-label);
-    position: absolute;
-    left: 15px;
-    width: 45%;
     font-weight: bold;
-    white-space: nowrap;
+    color: #444;
   }
 }
 </style>
