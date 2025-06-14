@@ -104,10 +104,11 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 #app {
-  max-width: 800px;
-  margin: 40px auto;
+  max-width: 900px;
+  margin: 30px auto;
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #fefefe;
@@ -121,53 +122,67 @@ h2 {
   margin-bottom: 20px;
 }
 
-input,
-select {
-  display: block;
+/* --- Form Input Style --- */
+.form-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.form-group input,
+.form-group select {
   width: 100%;
-  padding: 8px 12px;
-  margin-bottom: 10px;
+  padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 14px;
 }
 
 button {
-  padding: 8px 16px;
-  margin-right: 6px;
+  padding: 8px 14px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
   font-size: 14px;
+  margin: 4px 2px;
 }
 
 button:hover {
   opacity: 0.9;
 }
 
-button:nth-child(1) {
+button:nth-child(1),
+.btn-primary {
   background-color: #3498db;
   color: white;
 }
 
-button:nth-child(2) {
+.btn-warning {
+  background-color: #f39c12;
+  color: white;
+}
+
+.btn-danger {
   background-color: #e74c3c;
   color: white;
 }
 
+/* --- Table Style --- */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  background-color: #fff;
+  background-color: white;
 }
 
 th,
 td {
   padding: 10px;
-  border-bottom: 1px solid #ddd;
   text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
 }
 
 th {
@@ -178,7 +193,49 @@ th {
 p {
   text-align: center;
   font-style: italic;
-  color: #999;
+  color: #777;
   margin-top: 20px;
+}
+
+/* --- RESPONSIVE UNTUK HANDPHONE --- */
+@media (max-width: 768px) {
+  .form-group {
+    grid-template-columns: 1fr;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 15px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+  }
+
+  td {
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+    border: none;
+  }
+
+  td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 15px;
+    width: 45%;
+    font-weight: bold;
+    white-space: nowrap;
+  }
 }
 </style>
