@@ -1,15 +1,4 @@
 <template>
-  <div id="app">
-    <WifiList />
-  </div>
+  <RouterLink to="/">WifiList</RouterLink>
+  <RouterView />
 </template>
-
-<script>
-import WifiList from './components/WifiList.vue'
-
-export default {
-  components: {
-    WifiList
-  }
-}
-</script>
