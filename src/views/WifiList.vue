@@ -109,11 +109,11 @@ export default {
 #app {
   max-width: 960px;
   margin: 30px auto;
-  padding: 20px;
-  background: #fefefe;
+  padding: 24px;
   font-family: 'Segoe UI', sans-serif;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  background: #f0f8ff; /* biru sangat muda */
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
 }
 
 h2 {
@@ -126,7 +126,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .form-section input,
@@ -136,6 +136,7 @@ h2 {
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 14px;
+  background-color: #fff;
 }
 
 .btn {
@@ -149,18 +150,18 @@ h2 {
 }
 
 .btn.primary {
-  background-color: #3498db;
-  color: #fff;
+  background-color: #3b82f6; /* biru lembut */
+  color: white;
 }
 
 .btn.warning {
-  background-color: #f1c40f;
+  background-color: #facc15; /* kuning lembut */
   color: #333;
 }
 
 .btn.danger {
-  background-color: #e74c3c;
-  color: #fff;
+  background-color: #ef4444; /* merah lembut */
+  color: white;
 }
 
 .btn:hover {
@@ -179,13 +180,13 @@ table {
 
 th,
 td {
-  padding: 10px;
+  padding: 12px 10px;
   border-bottom: 1px solid #eee;
   text-align: left;
 }
 
 th {
-  background-color: #f3f3f3;
+  background-color: #f3f4f6; /* abu terang */
   color: #333;
 }
 
