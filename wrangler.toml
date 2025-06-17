@@ -1,5 +1,5 @@
 name = "internet"
-type = "javascript" # <- baris penting, ini harus ada
+# type = "javascript"  <- baris penting, ini harus ada
 main = "api/index.js"
 compatibility_date = "2024-12-30"
 
