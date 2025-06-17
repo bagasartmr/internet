@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.6.0",
+    "@cloudflare/wrangler": "^1.21.0",
     "@vitejs/plugin-vue": "^5.2.3",
     "vite": "^6.2.4",
     "vite-plugin-vue-devtools": "^7.7.2",
