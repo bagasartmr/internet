@@ -1,7 +1,6 @@
 {
   "name": "cf-vue",
   "version": "0.0.0",
-  "main": "api/index.js",
   "private": true,
   "type": "module",
   "scripts": {
