@@ -1,3 +1,4 @@
+type = "javascript"
 name = "internet"
 main = "api/index.js"
 compatibility_date = "2024-12-30"
