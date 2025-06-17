@@ -1,0 +1,12 @@
+name = "internet"
+main = "api/index.js"
+compatibility_date = "2024-12-30"
+
+[assets]
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "internet"
+database_id = "bff89823-71c1-40b9-93d3-7fa1b9abbd7a"
