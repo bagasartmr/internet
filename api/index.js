@@ -7,7 +7,7 @@ app.get('/api', (c) => {
 })
 
 app.get('/api/users', (c) => {
-  return c.text('users bagas');
+  return c.text('users bagas coba lagi');
 })
 
 
