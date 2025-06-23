@@ -3,7 +3,7 @@ import { Hono } from 'hono';
 const app = new Hono();
 
 app.get('/api', (c) => {
-  return c.text('hello');
+  return c.text('hello nama saya bagas');
 })
 
 app.get('/api/users', async (c) => {
