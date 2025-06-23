@@ -23,18 +23,3 @@ const router = createRouter({
 })
 
 export default router
-
-/*import { createRouter, CreateRouter, createWebHistory } from "vue-router"
-import WifiList from "../views/WifiList.vue"
-
-const routes = [
-  {
-    path:'', component: WifiList
-  }
-]
-const router = createRouter({
-history:createWebHistory(),
-routes
-})
-
-export default router*/
