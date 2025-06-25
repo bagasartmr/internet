@@ -45,22 +45,22 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-// Form data
+
 const name = ref('')
 const nohp = ref('')
 const alamat = ref('')
 const paket = ref('')
 
-// List pelanggan
+
 const wifiList = ref([])
 
-// Ambil data dari API (Read)
+
 const fetchData = async () => {
   const res = await fetch('/api/wifi')
   wifiList.value = await res.json()
 }
 
-// Simpan data (Create)
+
 const saveWifi = async () => {
   const newData = { name: name.value, nohp: nohp.value, alamat: alamat.value, paket: paket.value }
 
@@ -72,12 +72,11 @@ const saveWifi = async () => {
 
   const data = await response.json()
   if (data.success) {
-    alert('Data berhasil ditambahkan!')
     name.value = ''
     nohp.value = ''
     alamat.value = ''
     paket.value = ''
-    fetchData() // refresh list
+    fetchData()
   }
 }
 
