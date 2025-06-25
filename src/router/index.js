@@ -10,11 +10,6 @@ const router = createRouter({
       name: 'home',
       component: WifiForm,
     },
-    {
-      path: '/',
-      name: 'wifi-list',
-      component: WifiList
-    }
     ]
 })
 

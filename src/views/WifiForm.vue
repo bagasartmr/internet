@@ -1,30 +1,3 @@
-<script setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-const name = ref('')
-const nohp = ref('')
-const alamat = ref('')
-const paket = ref('')
-
-const saveWifi = async () => {
-  const newData = { name: name.value, nohp: nohp.value, alamat: alamat.value, paket: paket.value }
-
-  const response = await fetch('/api/wifi', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(newData)
-  })
-
-  const data = await response.json()
-  if (data.success) {
-    alert('Data berhasil ditambahkan!')
-    router.push('/')
-  }
-}
-</script>
-
 <template>
   <div>
     <h2>Tambah Pelanggan WiFi</h2>
@@ -40,5 +13,75 @@ const saveWifi = async () => {
       </select><br />
       <button type="submit">Simpan</button>
     </form>
+
+    <hr />
+
+    <h2>Daftar Pelanggan WiFi</h2>
+    <table v-if="wifiList.length">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>No HP</th>
+          <th>Alamat</th>
+          <th>Paket</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="wifi in wifiList" :key="wifi.id">
+          <td>{{ wifi.name }}</td>
+          <td>{{ wifi.nohp }}</td>
+          <td>{{ wifi.alamat }}</td>
+          <td>{{ wifi.paket }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <p v-else>Tidak ada data pelanggan WiFi.</p>
   </div>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+// Form data
+const name = ref('')
+const nohp = ref('')
+const alamat = ref('')
+const paket = ref('')
+
+// List pelanggan
+const wifiList = ref([])
+
+// Ambil data dari API (Read)
+const fetchData = async () => {
+  const res = await fetch('/api/wifi')
+  wifiList.value = await res.json()
+}
+
+// Simpan data (Create)
+const saveWifi = async () => {
+  const newData = { name: name.value, nohp: nohp.value, alamat: alamat.value, paket: paket.value }
+
+  const response = await fetch('/api/wifi', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newData)
+  })
+
+  const data = await response.json()
+  if (data.success) {
+    alert('Data berhasil ditambahkan!')
+    name.value = ''
+    nohp.value = ''
+    alamat.value = ''
+    paket.value = ''
+    fetchData() // refresh list
+  }
+}
+
+onMounted(() => {
+  fetchData()
+})
+</script>
