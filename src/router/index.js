@@ -5,11 +5,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
   {
-  path: '/create',
-  name: 'wifi-create',
-  component: WifiForm
-}
-  ],
+      path: '/',
+      name: 'home',
+      component: WifiForm,
+    },
+    ]
 })
 
 export default router
