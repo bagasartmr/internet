@@ -2,6 +2,10 @@ import { Hono } from 'hono';
 
 const app = new Hono();
 
+app.get('/api', (c) => {
+  return c.text('hai nama saya bagas :)');
+})
+
 app.get('/api/wifi', async (c) => {
   const result = await c.env.DB.prepare('SELECT * FROM wifi').all();
   return c.json(result.results);
