@@ -14,8 +14,6 @@
       <button type="submit">Simpan</button>
     </form>
 
-    <hr />
-
     <h2>Daftar Pelanggan WiFi</h2>
     <table v-if="wifiList.length">
       <thead>
