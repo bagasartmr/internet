@@ -1,9 +1,9 @@
 -- Migration number: 0001 	 2025-06-12T07:37:16.957Z
 
-CREATE TABLE IF NOT EXISTS products (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    price INTEGER
+CREATE TABLE wifi (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  nohp TEXT NOT NULL,
+  alamat TEXT NOT NULL,
+  paket TEXT NOT NULL
 );
-
-INSERT INTO products(name, price) VALUES ('produk 1', 5000), ('produk 2', 6000);
