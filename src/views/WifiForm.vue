@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Tambah Pelanggan WiFi</h2>
+    <h2>Tambah Data Pelanggan WiFi</h2>
     <form @submit.prevent="saveWifi">
       <input v-model="name" placeholder="Nama" /><br />
       <input v-model="nohp" placeholder="No HP" /><br />
@@ -46,21 +46,17 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 
-
 const name = ref('')
 const nohp = ref('')
 const alamat = ref('')
 const paket = ref('')
 
-
 const wifiList = ref([])
-
 
 const fetchData = async () => {
   const res = await fetch('/api/wifi')
   wifiList.value = await res.json()
 }
-
 
 const saveWifi = async () => {
   const newData = { name: name.value, nohp: nohp.value, alamat: alamat.value, paket: paket.value }
