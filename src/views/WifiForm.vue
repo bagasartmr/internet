@@ -93,6 +93,6 @@ const deleteWifi = async (id) => {
     method: 'DELETE'
   })
 
-  await fetchWifi()
+  await fetchData()
 }
 </script>
