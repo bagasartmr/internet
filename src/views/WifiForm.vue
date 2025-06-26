@@ -59,7 +59,16 @@ const fetchData = async () => {
 }
 
 const saveWifi = async () => {
-  const newData = { name: name.value, nohp: nohp.value, alamat: alamat.value, paket: paket.value }
+  if (!name.value || !nohp.value || !alamat.value || !paket.value) {
+    alert('Mohon lengkapi data.');
+    return;
+  }
+  const newData = { 
+    name: name.value, 
+    nohp: nohp.value, 
+    alamat: alamat.value, 
+    paket: paket.value 
+  }
 
   const response = await fetch('/api/wifi', {
     method: 'POST',
