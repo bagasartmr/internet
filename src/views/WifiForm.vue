@@ -30,6 +30,9 @@
           <td>{{ wifi.nohp }}</td>
           <td>{{ wifi.alamat }}</td>
           <td>{{ wifi.paket }}</td>
+          <td>
+          <button @click="deleteWifi(wifi.id)">Hapus</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -81,4 +84,15 @@ const saveWifi = async () => {
 onMounted(() => {
   fetchData()
 })
+
+const deleteWifi = async (id) => {
+  const confirmDelete = confirm('Yakin ingin menghapus data ini?')
+  if (!confirmDelete) return
+
+  await fetch(`/api/wifi/${id}`, {
+    method: 'DELETE'
+  })
+
+  await fetchWifi()
+}
 </script>

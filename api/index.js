@@ -20,6 +20,13 @@ app.post('/api/wifi', async (c) => {
   const result = await c.env.DB.prepare(query)
     .bind(input.name, input.nohp, input.alamat, input.paket)
     .run();
+})
+
+app.delete('/api/wifi/:id', async (c) => {
+  const id = c.req.param('id');
+
+  const query = `DELETE FROM wifi WHERE id = ?`;
+  const result = await c.env.DB.prepare(query).bind(id).run();  
 
   return c.json({ success: true, result });
 });
