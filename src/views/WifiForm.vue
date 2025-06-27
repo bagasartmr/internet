@@ -28,27 +28,28 @@
       <tbody>
         <tr v-for="wifi in wifiList" :key="wifi.id">
           <template v-if="wifi.editing">
-            <td><input v-model="wifi.name" /></td>
-            <td><input v-model="wifi.nohp" /></td>
-            <td><input v-model="wifi.alamat" /></td>
-            <td>
+            <td label="Nama"><input v-model="wifi.name" /></td>
+            <td label="No HP"><input v-model="wifi.nohp" /></td>
+            <td label="Alamat"><input v-model="wifi.alamat" /></td>
+            <td label="Paket">
               <select v-model="wifi.paket">
                 <option value="15 Mbps">15 Mbps - Rp165.000</option>
                 <option value="25 Mbps">25 Mbps - Rp250.000</option>
                 <option value="50 Mbps">50 Mbps - Rp450.000</option>
               </select>
             </td>
-            <td>
+            <td label="Aksi">
               <button @click="updateWifi(wifi)">Simpan</button>
               <button @click="cancelEdit(wifi)">Batal</button>
             </td>
           </template>
+
           <template v-else>
-            <td>{{ wifi.name }}</td>
-            <td>{{ wifi.nohp }}</td>
-            <td>{{ wifi.alamat }}</td>
-            <td>{{ wifi.paket }}</td>
-            <td>
+            <td label="Nama">{{ wifi.name }}</td>
+            <td label="No HP">{{ wifi.nohp }}</td>
+            <td label="Alamat">{{ wifi.alamat }}</td>
+            <td label="Paket">{{ wifi.paket }}</td>
+            <td label="Aksi">
               <button @click="editRow(wifi)">Edit</button>
               <button @click="deleteWifi(wifi.id)">Hapus</button>
             </td>
