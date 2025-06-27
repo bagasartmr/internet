@@ -1,80 +1,43 @@
-/*@import './base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
-}
-*/
-
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f7fa;
-  padding: 20px;
+  background-color: #f6f9fc;
   color: #333;
-}
-
-#app {
-  max-width: 700px;
-  margin: auto;
-  background: #fff;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
 }
 
 h2 {
-  text-align: center;
   color: #2c3e50;
+  margin-bottom: 10px;
 }
 
-input, select {
+form {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  max-width: 400px;
+}
+
+input,
+select {
   width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  margin-bottom: 15px;
+  padding: 8px;
+  margin-top: 6px;
+  margin-bottom: 12px;
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 5px;
   box-sizing: border-box;
 }
 
 button {
   padding: 8px 16px;
-  margin: 4px 2px;
-  border: none;
-  border-radius: 6px;
   background-color: #3498db;
   color: white;
+  border: none;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  margin-right: 5px;
 }
 
 button:hover {
@@ -84,20 +47,28 @@ button:hover {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
-  text-align: left;
   border-bottom: 1px solid #ddd;
+  text-align: left;
 }
 
 th {
   background-color: #ecf0f1;
 }
 
+tr:hover {
+  background-color: #f1f1f1;
+}
+
 p {
-  text-align: center;
   color: #888;
+  font-style: italic;
 }
