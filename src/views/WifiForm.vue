@@ -39,8 +39,8 @@
               </select>
             </td>
             <td label="Aksi">
-              <button class="aksi" @click="updateWifi(wifi)">Simpan</button>
-              <button class="aksi" @click="cancelEdit(wifi)">Batal</button>
+              <button @click="updateWifi(wifi)">Simpan</button>
+              <button @click="cancelEdit(wifi)">Batal</button>
             </td>
           </template>
 
@@ -50,9 +50,8 @@
             <td label="Alamat">{{ wifi.alamat }}</td>
             <td label="Paket">{{ wifi.paket }}</td>
             <td label="Aksi">
-              <button class="aksi" @click="editRow(wifi)">Edit</button>
-              <button class="aksi" @click="deleteWifi(wifi.id)">Hapus</button>
-
+              <button @click="editRow(wifi)">Edit</button>
+              <button @click="deleteWifi(wifi.id)">Hapus</button>
             </td>
           </template>
         </tr>
