@@ -22,18 +22,37 @@
           <th>No HP</th>
           <th>Alamat</th>
           <th>Paket</th>
+          <th>Aksi</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="wifi in wifiList" :key="wifi.id">
-          <td>{{ wifi.name }}</td>
-          <td>{{ wifi.nohp }}</td>
-          <td>{{ wifi.alamat }}</td>
-          <td>{{ wifi.paket }}</td>
-          <td>
-          <button @click="startEdit(wifi)">Edit</button>
-          <button @click="deleteWifi(wifi.id)">Hapus</button>
-          </td>
+          <template v-if="wifi.editing">
+            <td><input v-model="wifi.name" /></td>
+            <td><input v-model="wifi.nohp" /></td>
+            <td><input v-model="wifi.alamat" /></td>
+            <td>
+              <select v-model="wifi.paket">
+                <option value="15 Mbps">15 Mbps - Rp165.000</option>
+                <option value="25 Mbps">25 Mbps - Rp250.000</option>
+                <option value="50 Mbps">50 Mbps - Rp450.000</option>
+              </select>
+            </td>
+            <td>
+              <button @click="updateWifi(wifi)">Simpan</button>
+              <button @click="wifi.editing = false">Batal</button>
+            </td>
+          </template>
+          <template v-else>
+            <td>{{ wifi.name }}</td>
+            <td>{{ wifi.nohp }}</td>
+            <td>{{ wifi.alamat }}</td>
+            <td>{{ wifi.paket }}</td>
+            <td>
+              <button @click="editRow(wifi)">Edit</button>
+              <button @click="deleteWifi(wifi.id)">Hapus</button>
+            </td>
+          </template>
         </tr>
       </tbody>
     </table>
@@ -43,40 +62,23 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
 
 const name = ref('')
 const nohp = ref('')
 const alamat = ref('')
 const paket = ref('')
-
 const wifiList = ref([])
-
-// State Edit
-const isEditMode = ref(false)
-const editId = ref(null)
-
-// Fungsi Mulai Edit
-const startEdit = (wifi) => {
-  isEditMode.value = true
-  editId.value = wifi.id
-  name.value = wifi.name
-  nohp.value = wifi.nohp
-  alamat.value = wifi.alamat
-  paket.value = wifi.paket
-}
 
 const fetchData = async () => {
   const res = await fetch('/api/wifi')
-  wifiList.value = await res.json()
+  const data = await res.json()
+  wifiList.value = data.map(item => ({ ...item, editing: false }))
 }
 
 const saveWifi = async () => {
   if (!name.value || !nohp.value || !alamat.value || !paket.value) {
-    alert('Mohon lengkapi semua data.');
-    return;
+    alert('Mohon lengkapi semua data!')
+    return
   }
 
   const newData = {
@@ -84,41 +86,23 @@ const saveWifi = async () => {
     nohp: nohp.value,
     alamat: alamat.value,
     paket: paket.value
-  };
-
-  let response;
-  if (isEditMode.value && editId.value !== null) {
-    // Jika sedang mode edit
-    response = await fetch(`/api/wifi/${editId.value}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newData)
-    });
-  } else {
-    // Jika sedang menambahkan data baru
-    response = await fetch('/api/wifi', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newData)
-    });
   }
 
-  const data = await response.json();
+  const response = await fetch('/api/wifi', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newData)
+  })
+
+  const data = await response.json()
   if (data.success) {
-    name.value = '';
-    nohp.value = '';
-    alamat.value = '';
-    paket.value = '';
-    isEditMode.value = false;
-    editId.value = null;
-    fetchData();
+    name.value = ''
+    nohp.value = ''
+    alamat.value = ''
+    paket.value = ''
+    fetchData()
   }
 }
-
-
-onMounted(() => {
-  fetchData()
-})
 
 const deleteWifi = async (id) => {
   const confirmDelete = confirm('Yakin ingin menghapus data ini?')
@@ -127,7 +111,33 @@ const deleteWifi = async (id) => {
   await fetch(`/api/wifi/${id}`, {
     method: 'DELETE'
   })
-
-  await fetchData()
+  fetchData()
 }
+
+const editRow = (wifi) => {
+  wifi.editing = true
+}
+
+const updateWifi = async (wifi) => {
+  const response = await fetch(`/api/wifi/${wifi.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: wifi.name,
+      nohp: wifi.nohp,
+      alamat: wifi.alamat,
+      paket: wifi.paket
+    })
+  })
+
+  const data = await response.json()
+  if (data.success) {
+    wifi.editing = false
+    fetchData()
+  }
+}
+
+onMounted(() => {
+  fetchData()
+})
 </script>
