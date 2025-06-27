@@ -1,3 +1,4 @@
+/* Umum */
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f5f6fa;
@@ -17,12 +18,14 @@ body {
   border-radius: 12px;
 }
 
+/* Judul */
 h2 {
   text-align: center;
   color: #2c3e50;
   margin-bottom: 16px;
 }
 
+/* Form */
 form input,
 form select {
   width: 100%;
@@ -48,6 +51,7 @@ form button:hover {
   background-color: #2980b9;
 }
 
+/* Tabel */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -56,51 +60,55 @@ table {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  table-layout: fixed;
 }
 
 th, td {
   padding: 10px;
   border-bottom: 1px solid #ddd;
   text-align: left;
+  word-wrap: break-word;
 }
 
+/* Header Tabel */
 th {
   background-color: #ecf0f1;
 }
 
-button {
-  padding: 6px 10px;
-  margin: 2px;
+/* Tombol Aksi */
+.aksi {
+  width: 80px;
+  padding: 8px 0;
   font-size: 14px;
+  margin: 2px;
   border-radius: 6px;
   border: none;
   cursor: pointer;
+  text-align: center;
 }
 
-button:hover {
-  opacity: 0.9;
-}
-
-button:nth-child(1) {
+/* Warna Tombol Aksi */
+.aksi:first-child {
   background-color: #2ecc71;
   color: white;
 }
 
-button:nth-child(2) {
+.aksi:last-child {
   background-color: #e74c3c;
   color: white;
 }
 
-td input,
-td select {
-  width: 100%;
-  max-width: 150px;
-  box-sizing: border-box;
-  padding: 6px;
-  font-size: 14px;
+/* Tambahan agar tombol tidak meluber di dalam tabel */
+td button {
+  display: inline-block;
 }
 
+/* Responsive */
 @media screen and (max-width: 600px) {
+  #app {
+    margin: 10px;
+  }
+
   table, thead, tbody, th, td, tr {
     display: block;
   }
@@ -113,20 +121,25 @@ td select {
     box-shadow: 0 1px 4px rgba(0,0,0,0.1);
   }
 
+  th {
+    display: none;
+  }
+
   td {
     padding: 8px 10px;
     display: flex;
     justify-content: space-between;
   }
 
-  th {
-    display: none;
-  }
-
   td::before {
-    content: attr(label);
+    content: attr(data-label);
     font-weight: bold;
     color: #555;
     width: 40%;
+  }
+
+  .aksi {
+    width: 48%;
+    margin: 4px 1%;
   }
 }
