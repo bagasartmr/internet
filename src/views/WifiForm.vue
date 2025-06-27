@@ -40,7 +40,7 @@
             </td>
             <td>
               <button @click="updateWifi(wifi)">Simpan</button>
-              <button @click="wifi.editing = false">Batal</button>
+              <button @click="cancelEdit(wifi)">Batal</button>
             </td>
           </template>
           <template v-else>
@@ -72,7 +72,11 @@ const wifiList = ref([])
 const fetchData = async () => {
   const res = await fetch('/api/wifi')
   const data = await res.json()
-  wifiList.value = data.map(item => ({ ...item, editing: false }))
+  wifiList.value = data.map(item => ({
+    ...item,
+    editing: false,
+    original: { ...item }
+  }))
 }
 
 const saveWifi = async () => {
@@ -115,7 +119,16 @@ const deleteWifi = async (id) => {
 }
 
 const editRow = (wifi) => {
+  wifi.original = { ...wifi }
   wifi.editing = true
+}
+
+const cancelEdit = (wifi) => {
+  wifi.name = wifi.original.name
+  wifi.nohp = wifi.original.nohp
+  wifi.alamat = wifi.original.alamat
+  wifi.paket = wifi.original.paket
+  wifi.editing = false
 }
 
 const updateWifi = async (wifi) => {
