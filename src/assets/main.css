@@ -82,12 +82,12 @@ button:hover {
 }
 
 button:nth-child(1) {
-  background-color: #2ecc71;
+  background-color: #ffc400;
   color: white;
 }
 
 button:nth-child(2) {
-  background-color: #e74c3c;
+  background-color: #ee190a;
   color: white;
 }
 
